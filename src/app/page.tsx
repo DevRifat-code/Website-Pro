@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Menu, X, Code, ShoppingCart, FileText, Mail, Send, ArrowRight, Check, ExternalLink, FileCode, CheckCircle } from 'lucide-react';
 
 const navLinks = [
@@ -131,8 +132,8 @@ export default function Home() {
             <div className="lg:w-1/2 flex justify-center">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-                <div className="relative w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-blue-600 to-purple-700 rounded-3xl flex items-center justify-center shadow-2xl">
-                  <span className="text-8xl lg:text-9xl">👨‍💻</span>
+                <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-white/20">
+                  <Image src="/profile.png" alt="MD. Rifat Hossain" width={320} height={320} className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -bottom-4 -right-4 bg-white text-gray-900 px-4 py-2 rounded-lg shadow-lg">
                   <span className="text-sm font-medium">🚀 Building Ideas</span>
