@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Menu, X, Code, ShoppingCart, FileText, Mail, Send, ArrowRight, Check, Facebook, Twitter, Youtube, Github, ExternalLink, FileCode, CheckCircle } from 'lucide-react';
+import { Menu, X, Code, ShoppingCart, FileText, Mail, Send, ArrowRight, Check, ExternalLink, FileCode, CheckCircle } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -40,10 +40,10 @@ const blogs = [
 ];
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, color: 'hover:bg-blue-600' },
-  { name: 'Twitter', icon: Twitter, color: 'hover:bg-black' },
-  { name: 'YouTube', icon: Youtube, color: 'hover:bg-red-600' },
-  { name: 'GitHub', icon: Github, color: 'hover:bg-gray-800' },
+  { name: 'Facebook', icon: '📘', color: 'hover:bg-blue-600' },
+  { name: 'Twitter', icon: '🐦', color: 'hover:bg-black' },
+  { name: 'YouTube', icon: '📺', color: 'hover:bg-red-600' },
+  { name: 'GitHub', icon: '🐙', color: 'hover:bg-gray-800' },
 ];
 
 export default function Home() {
@@ -323,7 +323,7 @@ export default function Home() {
               <div className="flex gap-3 mt-6">
                 {socialLinks.map((social, index) => (
                   <a key={index} href="#" className={`w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors ${social.color}`}>
-                    <social.icon className="w-5 h-5" />
+                    <span className="text-2xl">{social.icon}</span>
                   </a>
                 ))}
               </div>
