@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Menu, X, Code, ShoppingCart, FileText, Newspaper, GraduationCap, Mail, Send, ArrowRight, CheckCircle, Star, Facebook, Twitter, Youtube, Github, ExternalLink } from 'lucide-react';
+import { Menu, X, Code, ShoppingCart, FileText, Mail, Send, ArrowRight, Check, Facebook, Twitter, Youtube, Github, ExternalLink, FileCode, CheckCircle } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -15,7 +15,7 @@ const services = [
   { title: 'Web Application', desc: 'Custom web applications built with modern technologies.', icon: Code },
   { title: 'E-Commerce Solutions', desc: 'Complete e-commerce solutions to grow your online business.', icon: ShoppingCart },
   { title: 'Invoice Software', desc: 'Powerful invoice & billing software for your business.', icon: FileText },
-  { title: 'Blog & News Websites', desc: 'SEO optimized blog & news websites with modern design.', icon: Newspaper },
+  { title: 'Blog & News Websites', desc: 'SEO optimized blog & news websites with modern design.', icon: FileCode },
   { title: 'PHP & MySQL', desc: 'Secure, fast and scalable PHP & MySQL based solutions.', icon: CheckCircle },
 ];
 
@@ -243,7 +243,7 @@ export default function Home() {
                   <p className="text-gray-700 font-medium">Clean Code</p>
                 </div>
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm">
-                  <Star className="w-8 h-8 text-purple-500 mx-auto mb-2" />
+                  <FileCode className="w-8 h-8 text-purple-500 mx-auto mb-2" />
                   <p className="text-gray-700 font-medium">Modern Design</p>
                 </div>
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm">
