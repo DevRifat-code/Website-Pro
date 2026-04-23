@@ -14,7 +14,7 @@ const invoiceData = {
   date: new Date().toISOString().split('T')[0],
   dueDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
   from: {
-    name: 'R MD. RIFAT HOSSAIN',
+    name: 'MD. RIFAT HOSSAIN',
     address: 'Dinajpur, Bangladesh',
     email: 'mdrifathossainpersonal@gmail.com',
     phone: '+8801XXXXXXXXX',

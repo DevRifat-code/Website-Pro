@@ -317,7 +317,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
-              <h3 className="text-2xl font-bold mb-4">R MD. RIFAT HOSSAIN</h3>
+              <h3 className="text-2xl font-bold mb-4">MD. RIFAT HOSSAIN</h3>
               <p className="text-gray-400 text-sm mb-4">Full Stack Developer</p>
               <p className="text-gray-400 text-sm">Building digital solutions that help businesses grow and succeed in the digital world.</p>
               <div className="flex gap-3 mt-6">
