@@ -24,10 +24,13 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log('Login success:', userCredential.user);
       router.push('/dashboard');
     } catch (error: any) {
-      alert(error.message || 'Login failed. Please check your credentials.');
+      console.error('Login error:', error);
+      const errorMessage = error.message || 'Login failed. Please check your credentials.';
+      alert(errorMessage);
     }
     setLoading(false);
   };

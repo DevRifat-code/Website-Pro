@@ -2,7 +2,6 @@ import { initializeApp, getApps, FirebaseApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 import { getFirestore, Firestore } from 'firebase/firestore';
 import { getStorage, FirebaseStorage } from 'firebase/storage';
-import { getAnalytics, Analytics } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_dAzyJKdn9XSQxiGZFLIl2iGZE8u3nZQ",
@@ -14,8 +13,20 @@ const firebaseConfig = {
   measurementId: "G-RPVHRVJ5DM"
 };
 
-export const app: FirebaseApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
-export const auth: Auth = getAuth(app);
-export const db: Firestore = getFirestore(app);
-export const storage: FirebaseStorage = getStorage(app);
-export const analytics: Analytics = typeof window !== 'undefined' ? getAnalytics(app) : null as any;
+let app: FirebaseApp;
+let auth: Auth;
+let db: Firestore;
+let storage: FirebaseStorage;
+
+if (typeof window !== 'undefined') {
+  try {
+    app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+    auth = getAuth(app);
+    db = getFirestore(app);
+    storage = getStorage(app);
+  } catch (e) {
+    console.error('Firebase init error:', e);
+  }
+}
+
+export { app, auth, db, storage };
