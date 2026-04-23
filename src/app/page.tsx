@@ -349,6 +349,8 @@ export default function Home() {
               <h4 className="font-bold mb-6 text-lg">Contact</h4>
               <div className="space-y-3 text-gray-400">
                 <p className="flex items-center gap-2"><Mail className="w-4 h-4" /> mdrifathossainpersonal@gmail.com</p>
+                <p className="flex items-center gap-2">📱 +8801889933520</p>
+                <a href="https://facebook.com/mdrifathossain" target="_blank" className="flex items-center gap-2 hover:text-blue-500">📘 Facebook</a>
               </div>
             </div>
           </div>
