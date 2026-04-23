@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Menu, X, Code, ShoppingCart, FileText, Mail, Send, ArrowRight, Check, ExternalLink, FileCode, CheckCircle } from 'lucide-react';
 
 const navLinks = [
@@ -35,9 +36,9 @@ const stats = [
 ];
 
 const blogs = [
-  { category: 'Web Development', title: 'Modern PHP Development Best Practices', date: 'May 15, 2024', image: 'bg-gradient-to-br from-blue-500 to-purple-600' },
-  { category: 'Business', title: 'How to Start a Software Business in 2024', date: 'May 10, 2024', image: 'bg-gradient-to-br from-emerald-500 to-teal-600' },
-  { category: 'Tutorial', title: 'Complete Guide to Invoice System Development', date: 'May 5, 2024', image: 'bg-gradient-to-br from-orange-500 to-red-600' },
+  { slug: 'modern-php-development-best-practices', category: 'Web Development', title: 'Modern PHP Development Best Practices', date: 'May 15, 2024', image: 'bg-gradient-to-br from-blue-500 to-purple-600' },
+  { slug: 'how-to-start-software-business-2024', category: 'Business', title: 'How to Start a Software Business in 2024', date: 'May 10, 2024', image: 'bg-gradient-to-br from-emerald-500 to-teal-600' },
+  { slug: 'complete-guide-invoice-system-development', category: 'Tutorial', title: 'Complete Guide to Invoice System Development', date: 'May 5, 2024', image: 'bg-gradient-to-br from-orange-500 to-red-600' },
 ];
 
 const socialLinks = [
@@ -279,9 +280,9 @@ export default function Home() {
                   <span className="text-sm text-blue-600 font-semibold">{blog.category}</span>
                   <h3 className="text-lg font-bold text-gray-900 mt-2 mb-2 group-hover:text-blue-600 transition-colors">{blog.title}</h3>
                   <p className="text-gray-500 text-sm">{blog.date}</p>
-                  <button className="text-blue-600 hover:text-blue-700 mt-4 font-medium flex items-center gap-1">
-                    Read More <ArrowRight className="w-4 h-4" />
-                  </button>
+<Link href={`/blog/${blog.slug}`} className="text-blue-600 hover:text-blue-700 mt-4 font-medium flex items-center gap-1">
+                      Read More <ArrowRight className="w-4 h-4" />
+                    </Link>
                 </div>
               </div>
             ))}
