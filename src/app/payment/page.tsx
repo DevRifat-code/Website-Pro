@@ -31,7 +31,7 @@ export default function PaymentPage() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      router.push('/dashboard');
+      router.push('/');
     }, 2000);
   };
 
@@ -123,8 +123,8 @@ export default function PaymentPage() {
             <h2 className="text-2xl font-bold text-white mb-2">Payment Successful!</h2>
             <p className="text-gray-300 mb-6">Your payment has been verified. Check your email for the product.</p>
             <div className="flex gap-4 justify-center">
-              <button onClick={() => router.push('/dashboard')} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700">
-                Go to Dashboard
+              <button onClick={() => router.push('/')} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700">
+                Go to Home
               </button>
               <a href="/" className="border border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-white/10">
                 Back to Home

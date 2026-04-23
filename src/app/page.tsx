@@ -10,8 +10,6 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Blog', href: '#blog' },
   { name: 'Contact', href: '#contact' },
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Login', href: '/login' },
 ];
 
 const services = [
@@ -76,7 +74,7 @@ export default function Home() {
                 </a>
               ))}
               <a href="#contact" className="ml-4 bg-blue-600 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-blue-700 transition-all hover:shadow-lg hover:shadow-blue-600/30">
-                Hire Me
+                Contact
               </a>
             </div>
             <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
