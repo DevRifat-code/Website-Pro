@@ -1,10 +1,10 @@
 'use client';
-import { useState } from 'react';
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
-import { Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { Mail, Lock, User, ArrowRight, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function RegisterPage() {
@@ -13,6 +13,15 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push('/dashboard');
+      }
+    });
+    return () => unsubscribe();
+  }, [router]);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,8 +35,8 @@ export default function RegisterPage() {
         createdAt: new Date().toISOString(),
       });
       router.push('/dashboard');
-    } catch (error) {
-      alert('Registration failed. Please try again.');
+    } catch (error: any) {
+      alert(error.message || 'Registration failed. Please try again.');
     }
     setLoading(false);
   };
@@ -38,14 +47,14 @@ export default function RegisterPage() {
       const provider = new GoogleAuthProvider();
       const userCredential = await signInWithPopup(auth, provider);
       await setDoc(doc(db, 'users', userCredential.user.uid), {
-        name: userCredential.user.displayName,
-        email: userCredential.user.email,
+        name: userCredential.user?.displayName || 'User',
+        email: userCredential.user?.email,
         role: 'customer',
         createdAt: new Date().toISOString(),
       });
       router.push('/dashboard');
-    } catch (error) {
-      alert('Google registration failed.');
+    } catch (error: any) {
+      alert(error.message || 'Google registration failed.');
     }
     setLoading(false);
   };
@@ -86,7 +95,8 @@ export default function RegisterPage() {
 
           <button type="submit" disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-            {loading ? 'Creating...' : 'Create Account'} <ArrowRight className="w-5 h-5" />
+            {loading ? <Loader2 className="animate-spin w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+            {loading ? 'Creating...' : 'Create Account'}
           </button>
         </form>
 

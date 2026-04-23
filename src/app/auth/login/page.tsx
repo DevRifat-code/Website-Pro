@@ -1,9 +1,9 @@
 'use client';
-import { useState } from 'react';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
-import { Mail, Lock, ArrowRight } from 'lucide-react';
+import { Mail, Lock, ArrowRight, Loader2 } from 'lucide-react';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -11,14 +11,23 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        router.push('/dashboard');
+      }
+    });
+    return () => unsubscribe();
+  }, [router]);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/dashboard');
-    } catch (error) {
-      alert('Login failed. Please check your credentials.');
+    } catch (error: any) {
+      alert(error.message || 'Login failed. Please check your credentials.');
     }
     setLoading(false);
   };
@@ -29,8 +38,8 @@ export default function LoginPage() {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       router.push('/dashboard');
-    } catch (error) {
-      alert('Google login failed.');
+    } catch (error: any) {
+      alert(error.message || 'Google login failed.');
     }
     setLoading(false);
   };
@@ -62,7 +71,8 @@ export default function LoginPage() {
 
           <button type="submit" disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50">
-            {loading ? 'Loading...' : 'Sign In'} <ArrowRight className="w-5 h-5" />
+            {loading ? <Loader2 className="animate-spin w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
