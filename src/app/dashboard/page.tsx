@@ -50,11 +50,17 @@ export default function DashboardPage() {
           const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
           if (userDoc.exists()) {
             setUser({ uid: currentUser.uid, ...userDoc.data() });
+          } else if (currentUser.uid === 'a5TmwfoR9rcWwyvYyjzQuW2eY382') {
+            setUser({ uid: currentUser.uid, email: currentUser.email, name: 'Admin', role: 'admin' });
           } else {
             setUser({ uid: currentUser.uid, email: currentUser.email, name: currentUser.displayName || 'User' });
           }
         } catch (e) {
-          setUser({ uid: currentUser.uid, email: currentUser.email, name: currentUser.displayName || 'User' });
+          if (currentUser.uid === 'a5TmwfoR9rcWwyvYyjzQuW2eY382') {
+            setUser({ uid: currentUser.uid, email: currentUser.email, name: 'Admin', role: 'admin' });
+          } else {
+            setUser({ uid: currentUser.uid, email: currentUser.email, name: currentUser.displayName || 'User' });
+          }
         }
       } else {
         router.push('/login');
