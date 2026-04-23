@@ -63,9 +63,8 @@ export default function Home() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            <div className="flex items-center">
-              <span className={`text-xl font-bold transition-colors ${scrolled ? 'text-blue-600' : 'text-white'}`}>R</span>
-              <span className={`text-xl font-bold ${scrolled ? 'text-gray-900' : 'text-white'}`}> MD. RIFAT HOSSAIN</span>
+            <div className="flex">
+              <span className={`text-xl font-bold ${scrolled ? 'text-blue-600' : 'text-white'}`}>MD. RIFAT HOSSAIN</span>
             </div>
             <div className="hidden md:flex items-center space-x-1">
               {navLinks.map((link) => (
