@@ -221,8 +221,8 @@ export default function Home() {
             <div className="lg:w-1/3">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
-                <div className="relative bg-gradient-to-br from-blue-600 to-purple-700 rounded-3xl p-8 text-center">
-                  <span className="text-9xl">👨‍💻</span>
+                <div className="relative w-64 h-64 lg:w-80 lg:h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                  <Image src="/profile.png" alt="MD. RIFAT HOSSAIN" width={320} height={320} className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -bottom-6 -right-6 bg-white text-gray-900 px-6 py-3 rounded-xl shadow-lg">
                   <p className="font-bold">2+ Years</p>
